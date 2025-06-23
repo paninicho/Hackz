@@ -481,6 +481,7 @@
                 ${(task.quizzes && task.quizzes.length > 0) ? task.quizzes.map((quiz, index) => {
                     const quizId = `${task._id}-${index}`;
                     const isSolved = (state.user.solvedQuizzes || []).includes(quizId);
+                    const explanationHTML = marked.parse(quiz.explanation || '');
                     return `
                     <div class="p-6 rounded-lg ${isSolved ? 'bg-green-900/50 border-green-500/30' : 'bg-gray-900 border-gray-800'} border">
                         <form class="quiz-form" data-quiz-index="${index}">
@@ -495,7 +496,7 @@
                                     <button type="button" class="hint-btn w-full sm:w-auto px-6 py-3 bg-gray-600 hover:bg-gray-700 rounded-md font-bold whitespace-nowrap">힌트 보기</button>
                                 </div>
                             </div>
-                            ` : `<p class="text-gray-400">정답: <span class="font-mono">${quiz.answer}</span></p>`}
+                            ` : `<div class="space-y-4"><p class="text-gray-400">정답: <span class="font-mono">${quiz.answer}</span></p>${quiz.explanation ? `<div class="prose prose-invert bg-gray-800/50 p-4 rounded">${explanationHTML}</div>` : ''}</div>`}
                             <div class="feedback-container mt-4"></div>
                         </form>
                     </div>`}).join('') : ''}
