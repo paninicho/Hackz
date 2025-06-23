@@ -236,6 +236,7 @@
                     </div>
                     <input class="w-full bg-gray-700 p-2 rounded mb-2" placeholder="질문" data-quiz-key="question" value="${quiz.question || ''}" required>
                     <input class="w-full bg-gray-700 p-2 rounded mb-2" placeholder="정답" data-quiz-key="answer" value="${quiz.answer || ''}" required>
+                    <textarea class="w-full bg-gray-700 p-2 rounded mb-2" placeholder="해설 (마크다운 지원)" data-quiz-key="explanation">${quiz.explanation || ''}</textarea>
                     <input type="number" class="w-full bg-gray-700 p-2 rounded" placeholder="점수" data-quiz-key="points" value="${quiz.points || 10}" required>
                 </div>`;
         }
